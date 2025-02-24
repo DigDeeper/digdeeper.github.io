@@ -3256,6 +3256,38 @@
           );
       }
     </style>
+    <style>
+      /* Responsive Image Handling */
+      .image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+      }
+
+      .hg {
+          width: 100%;
+          height: 100vh;
+          object-fit: cover;
+          object-position: center;
+      }
+
+      @media screen and (max-width: 768px) {
+          .image {
+              height: 300px;  /* Fixed height for mobile */
+              margin: 20px 0;
+          }
+
+          .hg {
+              height: 100vh;
+              object-position: center center;
+          }
+
+          .grid {
+              grid-template-columns: 1fr;  /* Stack items on mobile */
+          }
+      }
+    </style>
   </head>
   <body class="body">
     <!-- Minimal Snowfall -->
@@ -3408,7 +3440,7 @@
               </a>
             </div>
             <img
-              src="/media/mataji.jpg"
+              src="media/mataji.jpg"
               id="w-node-39e02eb8b346-0b7ceb38"
               alt=""
               class="image _01"
