@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPD Facilities</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #0b1d26;
+            --accent: #fbd784;
+            --text: #fff;
+            --light-text: #ddd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+        }
+
+        /* Snowfall Effect */
+        .snowflake {
+            position: fixed;
+            color: white;
+            font-size: 15px;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        @keyframes fall {
+            from { transform: translateY(-10vh) rotate(0deg); }
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        /* Navigation */
+        .navbar {
+            padding: 2rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            background: linear-gradient(180deg, rgba(11,29,38,0.8) 0%, rgba(11,29,38,0) 100%);
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ppd-logo {
+            font-weight: bold;
+            color: #FFA500;
+            font-size: 40px;
+            font-family: 'Chronicle';
+        }
+
+        .nav-link-wrapper {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            background: linear-gradient(rgba(11,29,38,0.8), rgba(11,29,38,0.8)), url('media/mandir.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .tagline {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tagline-line {
+            width: 72px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .heading-tagline {
+            color: var(--accent);
+            /* text-transform: uppercase; */
+            letter-spacing: 2px;
+        }
+
+        .h1-title {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+
+        /* Facilities Grid */
+        .facilities-section {
+            padding: 6rem 0;
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .facility-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .facility-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .facility-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .facility-card p {
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Snowfall Container -->
+    <div class="snowfall" id="snowfall"></div>
+
+    <div class="navbar">
+        <div class="content-wrapper nav">
+            <a href="index.html" class="logo">
+                <div class="ppd-logo">PPD</div>
+            </a>
+            <div class="nav-link-wrapper">
+                <a href="facilities.html" class="nav-link">Facilities</a>
+                <a href="about.html" class="nav-link">About us</a>
+                <a href="#" class="nav-link">Events</a>
+                <a href="#" class="nav-link">Photos</a>
+            </div>
+        </div>
+    </div>
+
+    <section class="hero-section">
+        <div class="content-wrapper">
+            <div class="tagline">
+                <div class="tagline-line"></div>
+                <h5 class="heading-tagline">Our Facilities</h5>
+            </div>
+            <h1 class="h1-title">Jagddhiteshwar Mahadev</h1>
+            <h4 class="heading-tagline">Shri Jagaddhiteshwar Mahadev temple, where God is invoked and worshipped daily in the form of shiv-linga representing our presiding deity – Shri Jagaddhiteshwar Mahadev seated in the sanctum sanctorum. </h4>
+            <br>
+            <h4 class="heading-tagline">It is a symbolic representation of the sadhaks path to SPIRITUAL AWAKENING and ENLIGHTENMENT.
+            </h4>
+        </div>
+    </section>
+
+    <section class="facilities-section">
+        <div class="content-wrapper">
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <img src="media/meditation-hall.jpg" alt="Meditation Hall">
+                    <h3>Meditation Hall</h3>
+                    <p>A serene space designed for deep meditation and spiritual practices, accommodating up to 100 practitioners.</p>
+                </div>
+                <div class="facility-card">
+                    <img src="media/accommodation.jpg" alt="Accommodation">
+                    <h3>Accommodation</h3>
+                    <p>Comfortable rooms with modern amenities while maintaining the spiritual atmosphere of the ashram.</p>
+                </div>
+                <div class="facility-card">
+                    <img src="media/dining.jpg" alt="Dining Hall">
+                    <h3>Dining Hall</h3>
+                    <p>Spacious dining area serving pure vegetarian meals prepared with love and devotion.</p>
+                </div>
+                <div class="facility-card">
+                    <img src="media/library.jpg" alt="Library">
+                    <h3>Spiritual Library</h3>
+                    <p>Extensive collection of spiritual texts, books, and manuscripts for deeper understanding.</p>
+                </div>
+                <div class="facility-card">
+                    <img src="media/yoga-hall.jpg" alt="Yoga Hall">
+                    <h3>Yoga Hall</h3>
+                    <p>Well-equipped space for yoga practices with natural lighting and peaceful surroundings.</p>
+                </div>
+                <div class="facility-card">
+                    <img src="media/garden.jpg" alt="Gardens">
+                    <h3>Meditation Gardens</h3>
+                    <p>Beautiful gardens for outdoor meditation and contemplative walks in nature.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Snowfall Effect
+        const total = 30;
+        for (let i = 0; i < total; i++) {
+            const snow = document.createElement('div');
+            snow.className = 'snowflake';
+            snow.style.left = Math.random() * 100 + '%';
+            snow.style.animation = `fall ${5 + Math.random() * 10}s linear ${Math.random() * 5}s infinite`;
+            snow.innerHTML = '•';
+            document.body.appendChild(snow);
+        }
+    </script>
+</body>
+</html> 
