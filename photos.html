@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About PPD</title>
+    <title>PPD Photos</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
@@ -84,29 +84,14 @@
             font-size: 1.1rem;
         }
 
-        /* Hero Section with GIF Background */
+        /* Hero Section */
         .hero-section {
-            min-height: 100vh;
-            position: relative;
+            min-height: 60vh;
+            background: linear-gradient(rgba(11,29,38,0.8), rgba(11,29,38,0.8)), url('media/gallery-bg.jpg');
+            background-size: cover;
+            background-position: center;
             display: flex;
             align-items: center;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.3;
-            z-index: -1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
         }
 
         .tagline {
@@ -133,91 +118,71 @@
             max-width: 800px;
         }
 
-        /* About Content Section */
-        .about-section {
+        /* Photo Gallery */
+        .gallery-section {
             padding: 6rem 0;
-            background: rgba(11,29,38,0.9);
         }
 
-        .about-grid {
+        .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 4rem;
-            align-items: center;
+            gap: 2rem;
+            margin-top: 4rem;
         }
 
-        .about-text {
-            color: var(--light-text);
-            line-height: 1.8;
-        }
-
-        .about-image {
-            border-radius: 20px;
+        .gallery-item {
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-radius: 15px;
+            height: 300px;
+            cursor: pointer;
         }
 
-        .about-image img {
+        .gallery-item img {
             width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .quote {
-            font-style: italic;
-            font-size: 1.2rem;
-            color: var(--accent);
-            margin: 2rem 0;
-            padding-left: 2rem;
-            border-left: 3px solid var(--accent);
-        }
-
-        /* Timeline Section */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 4rem auto;
-            padding: 2rem 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            width: 2px;
             height: 100%;
-            background: var(--accent);
-            left: 50%;
-            transform: translateX(-50%);
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.3s ease;
         }
 
-        .timeline-item {
-            margin: 2rem 0;
-            position: relative;
-            width: 50%;
-            padding: 0 2rem;
+        .gallery-item:hover img {
+            transform: scale(1.05);
         }
 
-        .timeline-item:nth-child(odd) {
+        .lightbox {
+            position: fixed;
+            top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1100;
         }
 
-        .timeline-item:nth-child(even) {
-            left: 50%;
+        .lightbox.active {
+            display: flex;
         }
 
-        .timeline-content {
-            background: rgba(255,255,255,0.05);
-            padding: 1.5rem;
-            border-radius: 10px;
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90vh;
+            object-fit: contain;
         }
 
-        .timeline-date {
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 1rem;
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
         }
 
-        /* Hide menu button on desktop */
+        /* Mobile Navigation */
         .mobile-menu {
             display: none;
         }
@@ -290,6 +255,15 @@
             .menu-button.active span:nth-child(3) {
                 transform: rotate(-45deg) translate(7px, -6px);
             }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 1rem;
+            }
+
+            .gallery-item {
+                height: 250px;
+            }
         }
     </style>
 </head>
@@ -319,72 +293,58 @@
     </div>
 
     <section class="hero-section">
-        <video class="hero-bg" autoplay loop muted playsinline>
-            <source src="media/fireworks.mp4" type="video/mp4">
-        </video>
-        <div class="content-wrapper hero-content">
+        <div class="content-wrapper">
             <div class="tagline">
                 <div class="tagline-line"></div>
-                <h5 class="heading-tagline">About Us</h5>
+                <h5 class="heading-tagline">Photo Gallery</h5>
             </div>
-            <h1 class="h1-title">Param Praman Darshan</h1>
-            <h4 class="heading-tagline">A Journey Towards Self-Realization</h4>
+            <h1 class="h1-title">Moments of Divine Grace</h1>
+            <h4 class="heading-tagline">Capturing the essence of spiritual journey</h4>
         </div>
     </section>
 
-    <section class="about-section">
+    <section class="gallery-section">
         <div class="content-wrapper">
-            <div class="about-grid">
-                <div class="about-text">
-                    <h2>Our Philosophy</h2>
-                    <div class="quote">
-                        "The journey of self-discovery leads to the ultimate truth"
-                    </div>
-                    <p>
-                        Param Praman Darshan is a spiritual organization dedicated to helping individuals discover their true nature through Vedant wisdom and practical spiritual practices. Our approach combines traditional teachings with contemporary understanding.
-                    </p>
-                    <br>
-                    <p>
-                        Founded on the principles of truth, love, and compassion, we provide a sacred space for spiritual seekers to explore their inner journey under proper guidance.
-                    </p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="media/photos/1.jpg" alt="Spiritual Moment">
                 </div>
-                <div class="about-image">
-                    <img src="media/swamiji1.JPG" alt="Spiritual Guide">
+                <div class="gallery-item">
+                    <img src="media/photos/2.jpg" alt="Temple View">
                 </div>
-            </div>
-
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">1990</div>
-                        <h3>Foundation</h3>
-                        <p>Establishment of Param Praman Darshan</p>
-                    </div>
+                <div class="gallery-item">
+                    <img src="media/photos/3.jpg" alt="Meditation">
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2000</div>
-                        <h3>Growth</h3>
-                        <p>Opening of the main ashram and meditation center</p>
-                    </div>
+                <div class="gallery-item">
+                    <img src="media/photos/4.jpg" alt="Sacred Space">
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">2010</div>
-                        <h3>Expansion</h3>
-                        <p>Establishment of multiple centers across the country</p>
-                    </div>
+                <div class="gallery-item">
+                    <img src="media/photos/5.jpg" alt="Divine Grace">
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date">Present</div>
-                        <h3>Global Reach</h3>
-                        <p>Spreading spiritual wisdom worldwide through various programs</p>
-                    </div>
+                <div class="gallery-item">
+                    <img src="media/photos/6.jpg" alt="Spiritual Practice">
+                </div>
+                <div class="gallery-item">
+                    <img src="media/mataji.jpg" alt="Mataji">
+                </div>
+                <div class="gallery-item">
+                    <img src="media/swamiji1.JPG" alt="Swamiji">
+                </div>
+                <div class="gallery-item">
+                    <img src="media/swamiji2.JPG" alt="Swamiji Teaching">
+                </div>
+                <div class="gallery-item">
+                    <img src="media/mandir.jpg" alt="Temple">
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img src="" alt="Enlarged Image">
+    </div>
 
     <script>
         // Snowfall Effect
@@ -411,6 +371,30 @@
                 document.querySelector('.nav-link-wrapper').classList.remove('show');
             });
         });
+
+        // Lightbox functionality
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const lightbox = document.querySelector('.lightbox');
+        const lightboxImg = lightbox.querySelector('img');
+        const closeLightbox = document.querySelector('.close-lightbox');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('img').src;
+                lightboxImg.src = imgSrc;
+                lightbox.classList.add('active');
+            });
+        });
+
+        closeLightbox.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('active');
+            }
+        });
     </script>
 </body>
-</html> 
+</html>
