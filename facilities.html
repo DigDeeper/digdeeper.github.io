@@ -154,6 +154,98 @@
             color: var(--light-text);
             line-height: 1.6;
         }
+
+        /* Hide menu button on desktop */
+        .mobile-menu {
+            display: none;
+        }
+
+        /* Responsive Navigation */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                padding: 1rem 0;
+                position: fixed;
+                width: 100%;
+                z-index: 1000;
+            }
+
+            .nav-link-wrapper {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 100vh;
+                background: rgba(11, 29, 38, 0.98);
+                padding: 100px 20px 20px;
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+                z-index: 999;
+                display: flex;
+            }
+
+            .nav-link-wrapper.show {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .nav-link {
+                color: white;
+                font-size: 1.2rem;
+                text-decoration: none;
+                padding: 10px;
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-link div {
+                color: white;
+                font-size: 1.2rem;
+            }
+
+            .menu-button {
+                display: block;
+                position: relative;
+                z-index: 1001;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 24px;
+                cursor: pointer;
+                padding: 10px;
+                margin-left: auto;
+            }
+
+            .menu-button span {
+                display: block;
+                width: 25px;
+                height: 2px;
+                background: white;
+                margin: 5px 0;
+                transition: 0.3s;
+            }
+
+            .menu-button.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .menu-button.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-button.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .mobile-menu {
+                display: block;
+                margin-left: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -165,11 +257,18 @@
             <a href="index.html" class="logo">
                 <div class="ppd-logo">PPD</div>
             </a>
-            <div class="nav-link-wrapper">
+            <div class="nav-link-wrapper" style="margin-left: auto;">
                 <a href="facilities.html" class="nav-link">Facilities</a>
                 <a href="about.html" class="nav-link">About us</a>
-                <a href="#" class="nav-link">Events</a>
+                <a href="events.html" class="nav-link">Events</a>
                 <a href="#" class="nav-link">Photos</a>
+            </div>
+            <div class="mobile-menu">
+                <button class="menu-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
     </div>
@@ -236,6 +335,20 @@
             snow.innerHTML = '•';
             document.body.appendChild(snow);
         }
+
+        // Mobile menu handling
+        document.querySelector('.menu-button').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.nav-link-wrapper').classList.toggle('show');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.menu-button').classList.remove('active');
+                document.querySelector('.nav-link-wrapper').classList.remove('show');
+            });
+        });
     </script>
 </body>
 </html> 

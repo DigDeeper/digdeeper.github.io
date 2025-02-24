@@ -3240,10 +3240,16 @@
           position: relative;
           background-color: #0b1d26;
           overflow: hidden;
++         min-height: 100vh;
++         width: 100%;
       }
 
       .hg {
           position: relative;
++         width: 100%;
++         height: 100vh;
++         object-fit: cover;
++         object-position: center;
           mask-image: linear-gradient(
               to bottom,
               black calc(100% - var(--scroll-blend, 0%)),
@@ -3255,6 +3261,22 @@
               transparent 100%
           );
       }
+
++     @media screen and (max-width: 768px) {
++         .hg {
++             height: 100vh;
++             width: 100%;
++             object-position: center center;
++             -webkit-transform: translateZ(0);
++             -webkit-backface-visibility: hidden;
++             -webkit-perspective: 1000;
++         }
++
++         .hero-section {
++             height: 100vh;
++             -webkit-transform: translateZ(0);
++         }
++     }
     </style>
     <style>
       /* Responsive Image Handling */
@@ -3286,6 +3308,9 @@
       @media screen and (max-width: 768px) {
           .navbar {
               padding: 1rem 0;
+              position: fixed;
+              width: 100%;
+              z-index: 1000;
           }
 
           .nav-link-wrapper {
@@ -3293,30 +3318,50 @@
               top: 0;
               left: 0;
               right: 0;
-              background: rgba(11, 29, 38, 0.95);
-              padding: 80px 20px 20px;
+              height: 100vh;
+              background: rgba(11, 29, 38, 0.98);
+              padding: 100px 20px 20px;
               flex-direction: column;
               align-items: center;
               gap: 1.5rem;
-              transform: translateY(-100%);
-              transition: transform 0.3s ease;
-              z-index: 90;
+              opacity: 0;
+              visibility: hidden;
+              transition: opacity 0.3s ease, visibility 0.3s ease;
+              z-index: 999;
+              display: flex;
           }
 
           .nav-link-wrapper.show {
-              transform: translateY(0);
+              opacity: 1;
+              visibility: visible;
+          }
+
+          .nav-link {
+              color: white;
+              font-size: 1.2rem;
+              text-decoration: none;
+              padding: 10px;
+              display: block;
+              width: 100%;
+              text-align: center;
+          }
+
+          .nav-link div {
+              color: white;
+              font-size: 1.2rem;
           }
 
           .menu-button {
               display: block;
               position: relative;
-              z-index: 100;
+              z-index: 1001;
               background: none;
               border: none;
               color: white;
               font-size: 24px;
               cursor: pointer;
               padding: 10px;
+              margin-left: auto;
           }
 
           .menu-button span {
@@ -3338,6 +3383,31 @@
 
           .menu-button.active span:nth-child(3) {
               transform: rotate(-45deg) translate(7px, -6px);
+          }
+      }
+    </style>
+    <style>
++     .mobile-menu {
++         display: none;
++     }
++ 
+      @media screen and (max-width: 768px) {
++         .mobile-menu {
++             display: block;
++             margin-left: 20px;
++         }
++ 
+          .menu-button {
+              display: block;
+              position: relative;
+              z-index: 1001;
+              background: none;
+              border: none;
+              color: white;
+              font-size: 24px;
+              cursor: pointer;
+              padding: 10px;
+-             margin-left: auto;
           }
       }
     </style>
@@ -3376,12 +3446,7 @@
                 <div style="font-weight: bold; color: #FFA500; font-size: 40px; font-family: 'Chronicle';">PPD</div>
               </div>
             </a>
-            <button class="menu-button">
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-            <div class="nav-link-wrapper">
+            <div class="nav-link-wrapper" style="margin-left: auto;">
               <a href="facilities.html" class="nav-link nav w-inline-block">
                 <div>Facilities</div>
               </a>
@@ -3395,26 +3460,12 @@
                 <div>Photos</div>
               </a>
             </div>
-            <div class="account">
-              <a href="#" class="link-to hero w-inline-block">
-                <div class="icon margin-right w-embed">
-                  <svg width="24" height="24" viewbox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M12 14C14.2091 14 16 12.2091 16 10C16 7.79086 14.2091 6 12 6C9.79086 6 8 7.79086 8 10C8 12.2091 9.79086 14 12 14ZM12 12C13.1046 12 14 11.1046 14 10C14 8.89543 13.1046 8 12 8C10.8954 8 10 8.89543 10 10C10 11.1046 10.8954 12 12 12Z"
-                      fill="currentColor"
-                    ></path>
-                    <path
-                      fill-rule="evenodd"
-                      clip-rule="evenodd"
-                      d="M17.9261 20.0557C20.397 18.235 22 15.3047 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 15.3047 3.60301 18.235 6.07388 20.0557C6.11934 20.0892 6.16509 20.1223 6.21112 20.1551C6.65997 20.4742 7.1363 20.7573 7.63587 21C8.95464 21.6407 10.4354 22 12 22C13.5646 22 15.0454 21.6407 16.3641 21C16.3909 20.987 16.4177 20.9738 16.4443 20.9606C16.9657 20.7015 17.4613 20.3982 17.9261 20.0557ZM17.2287 18.055C18.926 16.588 20 14.4194 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 14.4194 5.07401 16.588 6.77128 18.055C7.80066 16.2313 9.75654 15 12 15C14.2435 15 16.1993 16.2313 17.2287 18.055ZM15.5567 19.1679C14.8921 17.8803 13.5488 17 12 17C10.4512 17 9.10792 17.8803 8.44332 19.1679C9.51467 19.7005 10.7224 20 12 20C13.2776 20 14.4853 19.7005 15.5567 19.1679Z"
-                      fill="currentColor"
-                    ></path>
-                  </svg>
-                </div>
-                <div>Account</div>
-              </a>
+            <div class="mobile-menu">
+              <button class="menu-button">
+                <span></span>
+                <span></span>
+                <span></span>
+              </button>
             </div>
           </div>
         </div>
