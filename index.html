@@ -3262,29 +3262,79 @@
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: center;
-      }
-
-      .hg {
-          width: 100%;
-          height: 100vh;
-          object-fit: cover;
-          object-position: center;
+          object-position: top center;  /* This will keep the top of the image visible */
+          margin: 0;
       }
 
       @media screen and (max-width: 768px) {
           .image {
-              height: 300px;  /* Fixed height for mobile */
-              margin: 20px 0;
-          }
-
-          .hg {
-              height: 100vh;
-              object-position: center center;
+              min-height: 400px;  /* Minimum height on mobile */
+              width: 100%;
           }
 
           .grid {
               grid-template-columns: 1fr;  /* Stack items on mobile */
+              gap: 2rem;  /* Add some space between grid items */
+          }
+      }
+    </style>
+    <style>
+      /* Responsive Navigation */
+      @media screen and (max-width: 768px) {
+          .navbar {
+              padding: 1rem 0;
+          }
+
+          .nav-link-wrapper {
+              position: fixed;
+              top: 0;
+              left: 0;
+              right: 0;
+              background: rgba(11, 29, 38, 0.95);
+              padding: 80px 20px 20px;
+              flex-direction: column;
+              align-items: center;
+              gap: 1.5rem;
+              transform: translateY(-100%);
+              transition: transform 0.3s ease;
+              z-index: 90;
+          }
+
+          .nav-link-wrapper.show {
+              transform: translateY(0);
+          }
+
+          .menu-button {
+              display: block;
+              position: relative;
+              z-index: 100;
+              background: none;
+              border: none;
+              color: white;
+              font-size: 24px;
+              cursor: pointer;
+              padding: 10px;
+          }
+
+          .menu-button span {
+              display: block;
+              width: 25px;
+              height: 2px;
+              background: white;
+              margin: 5px 0;
+              transition: 0.3s;
+          }
+
+          .menu-button.active span:nth-child(1) {
+              transform: rotate(45deg) translate(5px, 5px);
+          }
+
+          .menu-button.active span:nth-child(2) {
+              opacity: 0;
+          }
+
+          .menu-button.active span:nth-child(3) {
+              transform: rotate(-45deg) translate(7px, -6px);
           }
       }
     </style>
@@ -3323,6 +3373,11 @@
                 <div style="font-weight: bold; color: #FFA500; font-size: 40px; font-family: 'Chronicle';">PPD</div>
               </div>
             </a>
+            <button class="menu-button">
+              <span></span>
+              <span></span>
+              <span></span>
+            </button>
             <div class="nav-link-wrapper">
               <a href="facilities.html" class="nav-link nav w-inline-block">
                 <div>Facilities</div>
@@ -3439,12 +3494,11 @@
                 </div>
               </a>
             </div>
-            <img
-              src="media/mataji.jpg"
-              id="w-node-39e02eb8b346-0b7ceb38"
-              alt=""
-              class="image _01"
-            />
+            <picture id="w-node-39e02eb8b346-0b7ceb38">
+              <source media="(max-width: 768px)" srcset="media/mataji-mobile.jpg">
+              <source media="(min-width: 769px)" srcset="media/mataji.jpg">
+              <img src="media/mataji.jpg" alt="Mataji" class="image _01">
+            </picture>
           </div>
         </div>
         <div class="content-wrapper content">
@@ -3575,6 +3629,23 @@
           // Apply blend
           heroImage.style.setProperty('--scroll-blend', `${blendAmount}%`);
       });
+    </script>
+    <script>
+      // Mobile menu handling
+      document.querySelector('.menu-button').addEventListener('click', function() {
+          this.classList.toggle('active');
+          document.querySelector('.nav-link-wrapper').classList.toggle('show');
+      });
+
+      // Close menu when clicking a link
+      document.querySelectorAll('.nav-link').forEach(link => {
+          link.addEventListener('click', () => {
+              document.querySelector('.menu-button').classList.remove('active');
+              document.querySelector('.nav-link-wrapper').classList.remove('show');
+          });
+      });
+
+      // Existing scripts...
     </script>
   </body>
 </html>
