@@ -291,6 +291,184 @@
                 transform: rotate(-45deg) translate(7px, -6px);
             }
         }
+
+        /* New sections styling */
+        .section-divider {
+            height: 2px;
+            background-color: var(--accent);
+            width: 100px;
+            margin: 5rem auto 3rem;
+            opacity: 0.7;
+        }
+        
+        .about-section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .about-section-title h2 {
+            color: var(--accent);
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Vision & Mission section */
+        .vision-mission {
+            margin-bottom: 4rem;
+        }
+        
+        .vision-mission-content {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+        
+        .vision-mission-content h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        /* Approach section */
+        .approach-section {
+            margin-bottom: 4rem;
+        }
+        
+        .approach-intro {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .approach-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .approach-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .approach-item h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .approach-item p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Mobile responsiveness */
+        @media screen and (max-width: 992px) {
+            .approach-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Additional description styling */
+        .about-additional {
+            margin: 3rem 0;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 10px;
+            line-height: 1.8;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin: 1.5rem 0;
+            line-height: 1.6;
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .approach-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .vision-mission-content {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Founding Members section */
+        .founders-section {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .founder-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .founder-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .founder-image {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .founder-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .founder-card h3 {
+            color: var(--accent);
+            padding: 1.5rem 1.5rem 0.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .founder-bio {
+            padding: 1rem 1.5rem 2rem;
+        }
+        
+        .founder-bio p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+        
+        .founder-bio p:last-child {
+            margin-bottom: 0;
+        }
+        
+        @media screen and (min-width: 992px) {
+            .founders-section {
+                flex-direction: row;
+                gap: 2rem;
+            }
+            
+            .founder-card {
+                flex: 1;
+            }
+        }
     </style>
 </head>
 <body>
@@ -307,6 +485,8 @@
                 <a href="about.html" class="nav-link">About us</a>
                 <a href="events.html" class="nav-link">Events</a>
                 <a href="photos.html" class="nav-link">Photos</a>
+                <a href="acharyas.html" class="nav-link">Acharyas</a>
+                <a href="classes.html" class="nav-link">Discourses</a>
             </div>
             <div class="mobile-menu">
                 <button class="menu-button">
@@ -319,9 +499,7 @@
     </div>
 
     <section class="hero-section">
-        <video class="hero-bg" autoplay loop muted playsinline>
-            <source src="media/fireworks.mp4" type="video/mp4">
-        </video>
+        <img class="hero-bg" src="media/about.jpg" alt="About Background">
         <div class="content-wrapper hero-content">
             <div class="tagline">
                 <div class="tagline-line"></div>
@@ -336,20 +514,157 @@
         <div class="content-wrapper">
             <div class="about-grid">
                 <div class="about-text">
-                    <h2>Our Philosophy</h2>
+                    <h2>About Param Praman Darshan</h2>
                     <div class="quote">
-                        "The journey of self-discovery leads to the ultimate truth"
+                        "Knowledge alone is said to be the greatest of all wealth for it can never be stolen, it is forever untainted & is not diminished on distribution"
                     </div>
                     <p>
-                        Param Praman Darshan is a spiritual organization dedicated to helping individuals discover their true nature through Vedant wisdom and practical spiritual practices. Our approach combines traditional teachings with contemporary understanding.
+                        'Param Praman Darshan' was established in the year 2002 on the banks of River Par at PARDI, in the Valsad District of Gujarat, as a centre for the study and propagation of the knowledge expounded in our Vedic scriptures.
                     </p>
                     <br>
                     <p>
-                        Founded on the principles of truth, love, and compassion, we provide a sacred space for spiritual seekers to explore their inner journey under proper guidance.
+                        In keeping with the vision of the enthusiastic acharyas, the darshanalaya offers seekers an opportunity to study the traditional teachings of Vedanta primarily through their mother tongue, Gujarati. Teaching is also imparted in English, selectively.
+                    </p>
+                    <br>
+                    <p>
+                        The knowledge which has originated from the Lord has itself come down to us through a Guru-Shishya parampara. Thus, modelled after the ancient system of 'GURUKULA' learning, students come here to live with the teachers for a systematic and thorough study of the Vedic scriptures as well as basic and advanced Sanskrit.
                     </p>
                 </div>
                 <div class="about-image">
                     <img src="media/swamiji1.JPG" alt="Spiritual Guide">
+                </div>
+            </div>
+
+            <div class="about-additional">
+                <p>
+                    Throughout the year, the darshanalaya offers long term as well as short term courses in Vedanta in addition to regular camps and other means of learning. A variety of learning modules covering all age groups, be it primary students, secondary students, the youth or entire families cater to the spiritual needs of the seekers and their family members.
+                </p>
+                <br>
+                <p>
+                    The Param Praman Darshan strives to propagate the spiritual knowledge through a number of programmes conducted across several cities at different locations in Gujarat and Maharashtra. Further, the darshanalaya also offers its services by teaching basic Vedic scriptures and teaching chanting of Vedic mantras to students in a number of schools at different cities.
+                </p>
+                <br>
+                <p>
+                    Through the teachings of the knowledge as given in our scriptures, the darshanalaya offers the seekers a unique opportunity to understand the purpose of life thereby helping to reach the ultimate goal of one's life.
+                </p>
+                <br>
+                <p>
+                    The darshanalaya with its scenic location, serene atmosphere and ambience is conducive to the learning of the scriptures and can accommodate over 400 sadhaks. The Brahmavidhya Bhavan, the open air theatre, Anna Sobha Brahma Bhojanalaya cater to the needs of residential learning of the seekers under the able guidance of the Acharyas.
+                </p>
+                <br>
+                <p>
+                    The doors of the darshanalaya are always open for seekers who wish to shape their destiny to achieve the ultimate goal of life i.e. self-enlightenment.
+                </p>
+            </div>
+
+            <!-- Vision & Mission Section -->
+            <div class="section-divider"></div>
+            <div class="about-section-title">
+                <h2>Vision & Mission</h2>
+            </div>
+            <div class="vision-mission">
+                <div class="vision-mission-content">
+                    <h3>Vision</h3>
+                    <p>To light the lamp of Vedic knowledge and righteousness in as many hearts as possible.</p>
+                </div>
+                
+                <div class="vision-mission-content">
+                    <h3>Mission</h3>
+                    <p>Establish a very traditional gurukulam with modern amenities.</p>
+                    <p>Provide a set-up for seekers to get a thorough knowledge of the scriptures through the medium of their mother tongue.</p>
+                    <p>Spread the message of our ancient scriptures to maximum number of people.</p>
+                </div>
+            </div>
+            
+            <!-- Approach Section -->
+            <div class="section-divider"></div>
+            <div class="about-section-title">
+                <h2>Our Approach</h2>
+            </div>
+            <div class="approach-section">
+                <div class="approach-intro">
+                    <p>To fulfill our vision and mission, we have developed a comprehensive approach that encompasses various dimensions of spiritual education and cultural preservation.</p>
+                </div>
+                
+                <div class="approach-grid">
+                    <div class="approach-item">
+                        <h3>Residential Learning</h3>
+                        <p>Offering comprehensive residential courses on 'Prasthaana Trayi' at our darshanalaya, providing immersive learning experiences.</p>
+                    </div>
+                    
+                    <div class="approach-item">
+                        <h3>Cultural Preservation</h3>
+                        <p>Upholding and promoting the glorious Vedic tradition, social culture, and ancient heritage of India through various programs.</p>
+                    </div>
+                    
+                    <div class="approach-item">
+                        <h3>Public Outreach</h3>
+                        <p>Creating awareness about our ancient teachings through public discourses, making wisdom accessible to all.</p>
+                    </div>
+                    
+                    <div class="approach-item">
+                        <h3>Age-Appropriate Education</h3>
+                        <p>Conducting classes on Vedic texts in various centers, tailored for different age groups to ensure proper understanding.</p>
+                    </div>
+                    
+                    <div class="approach-item">
+                        <h3>Youth Development</h3>
+                        <p>Imparting values and religious samskaras to children and youth, nurturing the next generation of spiritual seekers.</p>
+                    </div>
+                    
+                    <div class="approach-item">
+                        <h3>Resource Center</h3>
+                        <p>Establishing a well-equipped library with authentic traditional texts of Vedanta for research and study.</p>
+                    </div>
+                    
+                    <div class="approach-item">
+                        <h3>Spiritual Retreats</h3>
+                        <p>Conducting spiritual camps for members of all age groups, providing opportunities for deeper practice.</p>
+                    </div>
+                    
+                    <div class="approach-item">
+                        <h3>Modern Media</h3>
+                        <p>Making available quality audio, video, and digital media to spread spiritual knowledge through contemporary channels.</p>
+                    </div>
+                    
+                    <div class="approach-item">
+                        <h3>Festival Celebrations</h3>
+                        <p>Keeping alive our traditional customs through celebration of festivals, connecting people to their cultural roots.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Founding Members Section -->
+            <div class="section-divider"></div>
+            <div class="about-section-title">
+                <h2>Founding Members</h2>
+            </div>
+            <div class="founders-section">
+                <div class="founder-card">
+                    <div class="founder-image">
+                        <img src="media/ghelubhai.jpg" alt="Late Shri Ghelubhai Patel" onerror="this.src='media/placeholder.jpg'">
+                    </div>
+                    <h3>Late Shri Ghelubhai Patel</h3>
+                    <div class="founder-bio">
+                        <p>
+                            Tradition loving, sensitive individual with foresight and kind hearted by nature, Late Shri Ghelubhai Patel envisioned the need for creating a foundation for providing value education beyond syllabus based teaching. He became the pioneering force in the setting up of 'Param Praman Darshan'. His contribution during the foundation years of the sanstha will always be remembered by one and all.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="founder-card">
+                    <div class="founder-image">
+                        <img src="media/pratapbhai.jpg" alt="Shri Pratapbhai Patel" onerror="this.src='media/placeholder.jpg'">
+                    </div>
+                    <h3>Shri Pratapbhai Patel</h3>
+                    <div class="founder-bio">
+                        <p>
+                            Truly an icon of a self-made man, Shri Pratapbhai Patel is a visionary and established himself as a reputed construction professional. He has always strived for contributing to society and thus started working with numerous educational establishments and chaired few trusts as well. Philanthropic by nature, he not only believes in generous contributions for various social causes but also karma-daan.
+                        </p>
+                        <p>
+                            Shri. Pratabhai Patel is another pioneering force along with other trustees in the setting up of 'Param Praman Darshan'. He personally got involved in building the sanstha, setting up of the Param Praman Darshanalaya at Pardi, Valsad, Gujarat. Shri Pratapbhai is personally involved in various initiatives being rolled out by the sanstha. Shri Pratapbhai Patel and Smt. Shobhaben Patel have attended the first 'Prasthaana Trayi' program by staying at the Darshanalaya for two and a half years.
+                        </p>
+                    </div>
                 </div>
             </div>
 

@@ -250,6 +250,71 @@
                 display: block;
                 margin-left: 20px;
             }
+
+            .facility-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .facility-card {
+                max-width: 100%;
+            }
+            
+            .facility-image {
+                height: 250px;
+            }
+            
+            .h1-title {
+                font-size: 2.5rem;
+            }
+            
+            .facility-content h3 {
+                font-size: 1.5rem;
+            }
+            
+            .facility-details {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .facility-detail {
+                margin-bottom: 0.5rem;
+            }
+            
+            /* Improve spacing on mobile */
+            .content-wrapper {
+                padding: 0 1.5rem;
+            }
+            
+            .facilities-section {
+                padding: 3rem 0;
+            }
+            
+            /* Fix hero section on mobile */
+            .hero-section {
+                min-height: 40vh;
+                padding-top: 80px;
+            }
+        }
+        
+        /* Additional improvements for very small screens */
+        @media screen and (max-width: 480px) {
+            .facility-image {
+                height: 200px;
+            }
+            
+            .h1-title {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .heading-tagline {
+                font-size: 0.9rem;
+            }
+            
+            .facility-content {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -267,6 +332,8 @@
                 <a href="about.html" class="nav-link">About us</a>
                 <a href="events.html" class="nav-link">Events</a>
                 <a href="photos.html" class="nav-link">Photos</a>
+                <a href="acharyas.html" class="nav-link">Acharyas</a>
+                <a href="classes.html" class="nav-link">Discourses</a>
             </div>
             <div class="mobile-menu">
                 <button class="menu-button">

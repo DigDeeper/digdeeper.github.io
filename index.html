@@ -3379,16 +3379,17 @@
       }
     </style>
     <style>
-+     .mobile-menu {
-+         display: none;
-+     }
-+ 
+      /* Fix mobile menu display */
+      .mobile-menu {
+          display: none;
+      }
+      
       @media screen and (max-width: 768px) {
-+         .mobile-menu {
-+             display: block;
-+             margin-left: 20px;
-+         }
-+ 
+          .mobile-menu {
+              display: block;
+              margin-left: 20px;
+          }
+          
           .menu-button {
               display: block;
               position: relative;
@@ -3399,7 +3400,6 @@
               font-size: 24px;
               cursor: pointer;
               padding: 10px;
--             margin-left: auto;
           }
       }
     </style>
@@ -3409,12 +3409,65 @@
           color: #FFA500;
           font-size: 60px;
           font-family: 'Chronicle';
-+         text-decoration: none;
+          text-decoration: none;
       }
 
-+     .logo {
-+         text-decoration: none;
+      .logo {
+          text-decoration: none;
       }
+    </style>
+    <style>
+        /* Fix for mobile navbar on all pages */
+        @media screen and (max-width: 768px) {
+            /* Adjust navbar padding and structure */
+            .navbar {
+                padding: 1rem 0;
+            }
+            
+            /* Ensure logo and menu button are properly aligned */
+            .nav {
+                align-items: center;
+            }
+            
+            /* Adjust logo size on mobile */
+            .ppd-logo {
+                font-size: 32px; /* Reduced from 40px */
+            }
+            
+            /* Fix hero section padding to prevent overlap */
+            .hero-section .content-wrapper {
+                padding-top: 100px; /* Ensure content starts below navbar */
+            }
+            
+            /* Adjust tagline and title for better mobile display */
+            .tagline {
+                margin-top: 2rem;
+            }
+            
+            .h1-title {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .heading-tagline {
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Additional fixes for very small screens */
+        @media screen and (max-width: 480px) {
+            .ppd-logo {
+                font-size: 28px; /* Further reduced for very small screens */
+            }
+            
+            .navbar {
+                padding: 0.8rem 0;
+            }
+            
+            .hero-section .content-wrapper {
+                padding-top: 80px;
+            }
+        }
     </style>
   </head>
   <body class="body">
@@ -3463,6 +3516,12 @@
               </a>
               <a href="photos.html" class="nav-link nav w-inline-block">
                 <div>Photos</div>
+              </a>
+              <a href="acharyas.html" class="nav-link nav w-inline-block">
+                <div>Acharyas</div>
+              </a>
+              <a href="classes.html" class="nav-link nav w-inline-block">
+                <div>Discourses</div>
               </a>
             </div>
             <div class="mobile-menu">

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acharyas - PPD</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #0b1d26;
+            --accent: #fbd784;
+            --text: #fff;
+            --light-text: #ddd;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+        }
+
+        /* Navigation */
+        .navbar {
+            padding: 2rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            background: linear-gradient(180deg, rgba(11,29,38,0.8) 0%, rgba(11,29,38,0) 100%);
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ppd-logo {
+            font-weight: bold;
+            color: #FFA500;
+            font-size: 40px;
+            font-family: 'Chronicle';
+            text-decoration: none;
+        }
+
+        .logo {
+            text-decoration: none;
+        }
+
+        .nav-link-wrapper {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 30vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background-color: var(--primary);
+            padding-top: 0;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding-top: 20px;
+        }
+
+        .tagline {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tagline-line {
+            width: 72px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .heading-tagline {
+            color: var(--accent);
+            letter-spacing: 2px;
+        }
+
+        .h1-title {
+            font-size: 4rem;
+            margin-bottom: 0rem 0 0;
+            max-width: 800px;
+        }
+
+        /* Acharyas Section */
+        .acharyas-section {
+            padding: 0rem 0;
+        }
+
+        .acharyas-intro {
+            text-align: center;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .acharyas-intro h2 {
+            color: var(--accent);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .acharyas-intro p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .acharyas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .acharya-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .acharya-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .acharya-image {
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .acharya-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .acharya-card:hover .acharya-image img {
+            transform: scale(1.05);
+        }
+
+        .acharya-content {
+            padding: 2rem;
+        }
+
+        .acharya-content h3 {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .acharya-content p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .acharya-quote {
+            font-style: italic;
+            color: var(--light-text);
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        /* Mobile menu */
+        .mobile-menu {
+            display: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+                margin-left: 20px;
+            }
+
+            .menu-button {
+                display: block;
+                position: relative;
+                z-index: 1001;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 24px;
+                cursor: pointer;
+                padding: 10px;
+                margin-left: auto;
+            }
+
+            .menu-button span {
+                display: block;
+                width: 30px;
+                height: 3px;
+                background-color: white;
+                margin: 6px 0;
+                transition: all 0.3s ease;
+            }
+
+            .menu-button.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .menu-button.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-button.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            .nav-link-wrapper {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 100vh;
+                background: rgba(11, 29, 38, 0.98);
+                padding: 100px 20px 20px;
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+                z-index: 999;
+                display: flex;
+            }
+
+            .nav-link-wrapper.show {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .h1-title {
+                font-size: 2.5rem;
+            }
+
+            .acharya-image {
+                height: 300px;
+            }
+        }
+
+        /* Adjust the Shankaracharya container and image */
+        .shankaracharya-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0rem 0 0rem; /* Increased top padding to move image lower */
+            background-color: var(--primary);
+        }
+        
+        .shankaracharya-image {
+            max-width: 600px; /* Increased from 400px */
+            width: 100%;
+            height: auto;
+            transition: filter 0.3s ease;
+        }
+        
+        .shankaracharya-title {
+            font-family: 'Chronicle', serif;
+            color: #8B5A2B;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="content-wrapper">
+            <div class="nav">
+                <a href="index.html" class="logo">
+                    <div class="ppd-logo">PPD</div>
+                </a>
+                <div class="nav-link-wrapper" style="margin-left: auto;">
+                    <a href="facilities.html" class="nav-link">Facilities</a>
+                    <a href="about.html" class="nav-link">About us</a>
+                    <a href="events.html" class="nav-link">Events</a>
+                    <a href="photos.html" class="nav-link">Photos</a>
+                    <a href="acharyas.html" class="nav-link">Acharyas</a>
+                    <a href="classes.html" class="nav-link">Discourses</a>
+                </div>
+                <div class="mobile-menu">
+                    <button class="menu-button">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Add Shankaracharya section before hero section -->
+    <section class="hero-section">
+        <div class="content-wrapper hero-content">
+            <div class="tagline">
+                <div class="tagline-line"></div>
+                <div class="heading-tagline">SPIRITUAL GUIDES</div>
+            </div>
+            <h1 class="h1-title">Our Revered Acharyas</h1>
+        </div>
+    </section>
+    <div class="shankaracharya-container">
+        <img src="media/shankaracharyaji.png" alt="Adi Shankaracharya" class="shankaracharya-image" id="shankaracharya-img">
+    </div>
+    <section class="acharyas-section">
+        <div class="content-wrapper">
+            <div class="acharyas-intro">
+                <h2>Guiding Lights of Wisdom</h2>
+                <p>Our esteemed Acharyas are the pillars of Param Praman Darshan, embodying the ancient wisdom of Vedanta and guiding seekers on their spiritual journey. With their profound knowledge, compassionate guidance, and unwavering dedication, they illuminate the path to self-realization.</p>
+            </div>
+
+            <div class="acharyas-grid">
+                <div class="acharya-card">
+                    <div class="acharya-image">
+                        <img src="media/swamiji-main.jpg" alt="P.P Swami Nijanand Saraswati" onerror="this.src='media/placeholder.jpg'">
+                    </div>
+                    <div class="acharya-content">
+                        <h3>P.P Swami Nijanand Saraswati</h3>
+                        <p>A profound scholar of Vedanta and Sanskrit, P.P Swami Nijanand Saraswati has dedicated his life to the study and teaching of ancient wisdom. His clear explanations and deep insights make complex philosophical concepts accessible to all seekers.</p>
+                        <p>With over three decades of experience in guiding spiritual aspirants, Swamiji's teachings emphasize the practical application of Vedantic principles in daily life.</p>
+                        <div class="acharya-quote">
+                            "The journey to self-knowledge begins with understanding our true nature beyond the limitations of body and mind."
+                        </div>
+                    </div>
+                </div>
+
+                <div class="acharya-card">
+                    <div class="acharya-image">
+                        <img src="media/mataji-main.jpg" alt="P.P Swamini Shraddhanand Saraswati" onerror="this.src='media/placeholder.jpg'">
+                    </div>
+                    <div class="acharya-content">
+                        <h3>P.P Swamini Shraddhanand Saraswati</h3>
+                        <p>P.P Swamini Shraddhanand Saraswati is renowned for her profound knowledge of the Upanishads and Bhagavad Gita. Her teachings are characterized by clarity, depth, and a compassionate approach that resonates with seekers of all backgrounds.</p>
+                        <p>Swaminiji conducts regular classes and workshops on meditation, self-inquiry, and the practical application of Vedantic principles in modern life.</p>
+                        <div class="acharya-quote">
+                            "True freedom comes from understanding the eternal nature of the Self that transcends all changes and limitations."
+                        </div>
+                    </div>
+                </div>
+
+                <div class="acharya-card">
+                    <div class="acharya-image">
+                        <img src="media/satpriyanandji-main.jpg" alt="P.P Swamini Satpriyanand Saraswati" onerror="this.src='media/placeholder.jpg'">
+                    </div>
+                    <div class="acharya-content">
+                        <h3>P.P Swamini Satpriyanand Saraswati</h3>
+                        <p>With her extensive knowledge of Sanskrit and Vedic texts, P.P Swamini Satpriyanand Saraswati has been instrumental in making ancient wisdom accessible to contemporary seekers. Her teachings focus on the integration of spiritual knowledge with daily life.</p>
+                        <p>Swaminiji is particularly known for her work with youth, helping them navigate modern challenges while staying rooted in timeless spiritual values.</p>
+                        <div class="acharya-quote">
+                            "Knowledge is not merely intellectual understanding but a transformative experience that reveals our true nature."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu handling
+        document.querySelector('.menu-button').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.querySelector('.nav-link-wrapper').classList.toggle('show');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.menu-button').classList.remove('active');
+                document.querySelector('.nav-link-wrapper').classList.remove('show');
+            });
+        });
+
+        // Add scroll effect for Shankaracharya image
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            const shankaracharyaImg = document.getElementById('shankaracharya-img');
+            
+            // Calculate blur based on scroll position (max 8px blur)
+            const blurAmount = Math.min(scrollPosition / 100, 8);
+            
+            // Apply blur filter
+            shankaracharyaImg.style.filter = `blur(${blurAmount}px)`;
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acharyas Classes - PPD</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #0b1d26;
+            --accent: #fbd784;
+            --text: #fff;
+            --light-text: #ddd;
+            --dark-accent: #e6c06e;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --hover-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+        }
+
+        /* Navigation */
+        .navbar {
+            padding: 2rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            background: linear-gradient(180deg, rgba(11,29,38,0.8) 0%, rgba(11,29,38,0) 100%);
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ppd-logo {
+            font-weight: bold;
+            color: #FFA500;
+            font-size: 40px;
+            font-family: 'Chronicle';
+            text-decoration: none;
+        }
+
+        .logo {
+            text-decoration: none;
+        }
+
+        .nav-link-wrapper {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 40vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(rgba(11,29,38,0.8), rgba(11,29,38,0.8)), url('media/classes-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding-top: 100px;
+        }
+
+        .tagline {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tagline-line {
+            width: 72px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .heading-tagline {
+            color: var(--accent);
+            letter-spacing: 2px;
+        }
+
+        .h1-title {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+
+        /* Custom Calendar Section */
+        .calendar-section {
+            padding: 4rem 0;
+        }
+
+        .calendar-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--card-bg);
+            border: none;
+            color: var(--text);
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .filter-btn.active {
+            background: var(--accent);
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .filter-btn:hover:not(.active) {
+            background: var(--hover-bg);
+        }
+
+        /* Month Navigation */
+        .month-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            background: var(--card-bg);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+        }
+
+        .month-display {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        .month-nav-btn {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .month-nav-btn:hover {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        /* Classes Grid */
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .class-card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            border-top: 3px solid var(--accent);
+        }
+
+        .class-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .class-header {
+            padding: 1.5rem 1.5rem 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .class-date {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .date-number {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .date-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .date-month {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .date-day {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+
+        .class-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+
+        .class-teacher {
+            color: var(--accent);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .class-body {
+            padding: 1.5rem;
+        }
+
+        .class-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .class-detail i {
+            color: var(--accent);
+            font-size: 1rem;
+            margin-top: 0.2rem;
+        }
+
+        .class-detail-content {
+            flex: 1;
+        }
+
+        .class-detail-label {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-bottom: 0.2rem;
+        }
+
+        .class-detail-text {
+            font-size: 1rem;
+        }
+
+        .class-description {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            line-height: 1.6;
+        }
+
+        .class-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .class-action-btn {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .register-btn {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .register-btn:hover {
+            background: var(--dark-accent);
+        }
+
+        .calendar-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+        }
+
+        .calendar-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .class-tag {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .tag-online {
+            background: rgba(0, 150, 136, 0.2);
+            color: #00BFA5;
+        }
+
+        .tag-in-person {
+            background: rgba(156, 39, 176, 0.2);
+            color: #BA68C8;
+        }
+
+        /* No Classes Message */
+        .no-classes {
+            text-align: center;
+            padding: 3rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+            font-size: 1.2rem;
+        }
+
+        .no-classes i {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Calendar Info Section */
+        .calendar-info {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 10px;
+        }
+
+        .calendar-info h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .calendar-info p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .calendar-info ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .calendar-info li {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        /* Mobile responsiveness */
+        @media screen and (max-width: 768px) {
+            .h1-title {
+                font-size: 2.5rem;
+            }
+
+            .classes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .month-display {
+                font-size: 1.2rem;
+            }
+
+            .nav-link-wrapper {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 100vh;
+                background: rgba(11, 29, 38, 0.98);
+                padding: 100px 20px 20px;
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease, visibility 0.3s ease;
+                z-index: 999;
+                display: flex;
+            }
+
+            .nav-link-wrapper.show {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .mobile-menu {
+                display: block;
+                position: relative;
+                z-index: 1001;
+            }
+
+            .menu-button {
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 10px;
+            }
+
+            .menu-button span {
+                display: block;
+                width: 25px;
+                height: 2px;
+                background: white;
+                margin: 5px 0;
+                transition: 0.3s;
+            }
+
+            .menu-button.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .menu-button.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .menu-button.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="content-wrapper nav">
+            <a href="index.html" class="logo">
+                <div class="ppd-logo">PPD</div>
+            </a>
+            <div class="nav-link-wrapper" style="margin-left: auto;">
+                <a href="facilities.html" class="nav-link">Facilities</a>
+                <a href="about.html" class="nav-link">About us</a>
+                <a href="events.html" class="nav-link">Events</a>
+                <a href="photos.html" class="nav-link">Photos</a>
+                <a href="acharyas.html" class="nav-link">Acharyas</a>
+                <a href="classes.html" class="nav-link">Discourses</a>
+            </div>
+            <div class="mobile-menu">
+                <button class="menu-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <section class="hero-section">
+        <div class="content-wrapper hero-content">
+            <div class="tagline">
+                <div class="tagline-line"></div>
+                <div class="heading-tagline">SPIRITUAL LEARNING</div>
+            </div>
+            <h1 class="h1-title">Acharyas' Classes & Lectures</h1>
+        </div>
+    </section>
+    
+    <section class="calendar-section">
+        <div class="content-wrapper">
+            <div class="calendar-filters">
+                <button class="filter-btn active" data-filter="all">All Classes</button>
+                <button class="filter-btn" data-filter="swami-nijanand">Swami Nijanand</button>
+                <button class="filter-btn" data-filter="swamini-shraddhanand">Swamini Shraddhanand</button>
+                <button class="filter-btn" data-filter="swamini-satpriyanand">Swamini Satpriyanand</button>
+                <button class="filter-btn" data-filter="online">Online Classes</button>
+                <button class="filter-btn" data-filter="in-person">In-Person Events</button>
+            </div>
+            
+            <div class="month-navigation">
+                <button class="month-nav-btn prev-month"><i class="fas fa-chevron-left"></i></button>
+                <div class="month-display">June 2024</div>
+                <button class="month-nav-btn next-month"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            
+            <div class="classes-grid" id="classes-container">
+                <!-- Classes will be loaded here dynamically -->
+            </div>
+            
+            <div class="calendar-info">
+                <h3>About Our Classes</h3>
+                <p>Our esteemed Acharyas conduct regular classes and workshops on Vedanta, meditation, and spiritual practices. These sessions are designed to help seekers understand the profound wisdom of our ancient scriptures and apply them in daily life.</p>
+                
+                <h3>How to Join</h3>
+                <ul>
+                    <li><strong>In-Person Classes:</strong> Please arrive 15 minutes before the scheduled time. No prior registration required unless specified.</li>
+                    <li><strong>Online Classes:</strong> Registration links are provided in the event description. You will receive a confirmation email with joining instructions.</li>
+                </ul>
+                
+                <h3>Class Schedule Updates</h3>
+                <p>This calendar is regularly updated with new classes and events. You can subscribe to our newsletter to receive notifications about upcoming sessions.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Updated class data with real schedules for all three Acharyas
+        const classesData = [
+            {
+                id: 1,
+                title: "Introduction to Vedanta",
+                teacher: "P.P Swami Nijanand Saraswati",
+                teacherSlug: "swami-nijanand",
+                date: "2024-06-15",
+                day: "Saturday",
+                time: "10:00 AM - 12:00 PM",
+                location: "Main Ashram Hall, Pardi",
+                mode: "in-person",
+                description: "An introductory class on the fundamental principles of Vedanta philosophy. Learn about the nature of reality, consciousness, and the self.",
+                registerLink: "#"
+            },
+            {
+                id: 2,
+                title: "Shreemad Bhagavad Gita (English)",
+                teacher: "P.P Swamini Shraddhanand Saraswati",
+                teacherSlug: "swamini-shraddhanand",
+                date: "2024-06-18",
+                day: "Tuesday",
+                time: "7:30 PM - 8:30 PM",
+                location: "Ambemata Mandir Hall, Vapi, Gujarat",
+                mode: "in-person",
+                description: "Continuing our study of the Bhagavad Gita. For more information, contact Shri. Balasubramaniam: +91 9824101950.",
+                registerLink: "#"
+            },
+            {
+                id: 3,
+                title: "Kathopanishad",
+                teacher: "P.P Swamini Satpriyanand Saraswati",
+                teacherSlug: "swamini-satpriyanand",
+                date: "2024-06-21",
+                day: "Friday",
+                time: "7:30 AM - 8:30 AM",
+                location: "Paramount Circle, Near Natubhai Circle, Vadodara, Gujarat 390023",
+                mode: "in-person",
+                description: "Monthly Kathopanishad class. For more information, contact Shri Vashisthbhai Dave: 9725905599.",
+                registerLink: "#"
+            },
+            {
+                id: 4,
+                title: "Shreemad Bhagvad Geeta",
+                teacher: "P.P Swami Nijanand Saraswati",
+                teacherSlug: "swami-nijanand",
+                date: "2024-06-24",
+                day: "Monday",
+                time: "6:15 PM - 7:15 PM",
+                location: "Dharti Vikas Mandal Hall, Naranpura, Ahmedabad",
+                mode: "in-person",
+                description: "Monthly Bhagavad Gita class. For more information, contact Nalinbhai Shah: 9824056704.",
+                registerLink: "#"
+            },
+            {
+                id: 5,
+                title: "Shreemad Bhagvad Geeta",
+                teacher: "P.P Swami Nijanand Saraswati",
+                teacherSlug: "swami-nijanand",
+                date: "2024-06-25",
+                day: "Tuesday",
+                time: "6:15 PM - 7:15 PM",
+                location: "Dharti Vikas Mandal Hall, Naranpura, Ahmedabad",
+                mode: "in-person",
+                description: "Continuation of Monday's Bhagavad Gita class. For more information, contact Nalinbhai Shah: 9824056704.",
+                registerLink: "#"
+            },
+            {
+                id: 6,
+                title: "Geeta Darshan",
+                teacher: "P.P Swamini Shraddhanand Saraswati",
+                teacherSlug: "swamini-shraddhanand",
+                date: "2024-07-01",
+                day: "Monday",
+                time: "7:00 AM - 8:00 AM",
+                location: "Ashirwad Hall, G.N.F.C Township, Narmadanagar, Bharuch",
+                mode: "in-person",
+                description: "Monthly Geeta Darshan class. For more information, contact Shri. Jayeshbhai Mistry: +91 7600053503.",
+                registerLink: "#"
+            },
+            {
+                id: 7,
+                title: "Shri Vishnusahasranaam Stotra Parayan and Question Answer",
+                teacher: "P.P Swamini Satpriyanand Saraswati",
+                teacherSlug: "swamini-satpriyanand",
+                date: "2024-07-01",
+                day: "Monday",
+                time: "6:00 PM - 7:30 PM",
+                location: "PPD Ashram, Pardi",
+                mode: "in-person",
+                description: "Monthly Vishnusahasranaam Stotra Parayan followed by a question and answer session. For more information, contact Shri Vashisthbhai Dave: 9725905599.",
+                registerLink: "#"
+            },
+            {
+                id: 8,
+                title: "Shreemad Bhagvad Geeta",
+                teacher: "P.P Swami Nijanand Saraswati",
+                teacherSlug: "swami-nijanand",
+                date: "2024-07-01",
+                day: "Monday",
+                time: "7:30 AM - 8:30 AM",
+                location: "Brahman Samaj Hall, Joshi Lane, Ghatkopar (East), Mumbai 400077",
+                mode: "in-person",
+                description: "Monthly Bhagavad Gita class. For more information, contact Dr. Mansukhbhai Mandaliya: 8108453149 or Kamlesh Gandhi: 9820034766.",
+                registerLink: "#"
+            },
+            {
+                id: 9,
+                title: "Shri Vishnusahasranamam Stotra",
+                teacher: "P.P Swamini Satpriyanand Saraswati",
+                teacherSlug: "swamini-satpriyanand",
+                date: "2024-07-07",
+                day: "Sunday",
+                time: "7:30 AM - 8:30 AM",
+                location: "Brahman Samaj Hall, Joshi Lane, Ghatkopar (East), Mumbai 400077",
+                mode: "in-person",
+                description: "Monthly Vishnusahasranamam Stotra class. For more information, contact Dr. Mansukhbhai Mandaliya: 8108453149 or Kamlesh Gandhi: 9820034766.",
+                registerLink: "#"
+            },
+            {
+                id: 10,
+                title: "Shreemad Bhagavad Geeta (English)",
+                teacher: "P.P Swamini Shraddhanand Saraswati",
+                teacherSlug: "swamini-shraddhanand",
+                date: "2024-07-07",
+                day: "Sunday",
+                time: "6:15 PM - 7:30 PM",
+                location: "Sports Complex, G.N.F.C, Bharuch, Gujarat",
+                mode: "in-person",
+                description: "Monthly Bhagavad Geeta class in English. For more information, contact Dr. (Smt.) Jaya Ayyer: +91 9898036770.",
+                registerLink: "#"
+            },
+            {
+                id: 11,
+                title: "Shreemad Bhagvad Geeta - Purushottama yoga",
+                teacher: "P.P Swami Nijanand Saraswati",
+                teacherSlug: "swami-nijanand",
+                date: "2024-07-07",
+                day: "Sunday",
+                time: "5:30 PM - 6:30 PM",
+                location: "Govardhan nathji Mandir, 10th Road Juhu",
+                mode: "in-person",
+                description: "Monthly class on Purushottama yoga from the Bhagavad Gita. For more information, contact Falguni Parekh: 9819667749, Shailesh Udeshi: 9870129460, or Bakulesh Vora: 9321789106.",
+                registerLink: "#"
+            },
+            {
+                id: 12,
+                title: "Uddhav Geeta",
+                teacher: "P.P Swamini Shraddhanand Saraswati",
+                teacherSlug: "swamini-shraddhanand",
+                date: "2024-07-13",
+                day: "Saturday",
+                time: "7:15 AM - 8:30 AM",
+                location: "Shree Ayyappa Temple, Off S.V.Road, Near Kalyan Jewellers, Ram Nagar, Borivali (W), Mumbai - 400092",
+                mode: "in-person",
+                description: "Monthly Uddhav Geeta class. For more information, contact Pareshbhai Raval: 9324368748, Bharatbhai Thakar: 9869472807, or Janakbhai Thakar: 9821094155.",
+                registerLink: "#"
+            },
+            {
+                id: 13,
+                title: "Kathopanishad",
+                teacher: "P.P Swamini Satpriyanand Saraswati",
+                teacherSlug: "swamini-satpriyanand",
+                date: "2024-07-19",
+                day: "Friday",
+                time: "7:30 AM - 8:30 AM",
+                location: "Paramount Circle, Near Natubhai Circle, Vadodara, Gujarat 390023",
+                mode: "in-person",
+                description: "Monthly Kathopanishad class. For more information, contact Shri Vashisthbhai Dave: 9725905599.",
+                registerLink: "#"
+            },
+            {
+                id: 14,
+                title: "Vivek Chudamani",
+                teacher: "P.P Swamini Shraddhanand Saraswati",
+                teacherSlug: "swamini-shraddhanand",
+                date: "2024-07-20",
+                day: "Saturday",
+                time: "6:45 PM - 8:00 PM",
+                location: "KES Shroff College Mini Auditorium, Kandivali (W), Mumbai - 400067",
+                mode: "in-person",
+                description: "Monthly Vivek Chudamani class. For more information, contact Mukesh Joshi: 9869624033 or Nilesh Bhatt: 9821072522.",
+                registerLink: "#"
+            },
+            {
+                id: 15,
+                title: "Shreemad Bhagvad Geeta",
+                teacher: "P.P Swami Nijanand Saraswati",
+                teacherSlug: "swami-nijanand",
+                date: "2024-07-22",
+                day: "Monday",
+                time: "6:15 PM - 7:15 PM",
+                location: "Dharti Vikas Mandal Hall, Naranpura, Ahmedabad",
+                mode: "in-person",
+                description: "Monthly Bhagavad Gita class. For more information, contact Nalinbhai Shah: 9824056704.",
+                registerLink: "#"
+            },
+            {
+                id: 16,
+                title: "Shreemad Bhagvad Geeta",
+                teacher: "P.P Swami Nijanand Saraswati",
+                teacherSlug: "swami-nijanand",
+                date: "2024-07-23",
+                day: "Tuesday",
+                time: "6:15 PM - 7:15 PM",
+                location: "Dharti Vikas Mandal Hall, Naranpura, Ahmedabad",
+                mode: "in-person",
+                description: "Continuation of Monday's Bhagavad Gita class. For more information, contact Nalinbhai Shah: 9824056704.",
+                registerLink: "#"
+            }
+        ];
+        
+        // Display classes function
+        function displayClasses(filter = 'all') {
+            const container = document.getElementById('classes-container');
+            container.innerHTML = '';
+            
+            const filteredClasses = filter === 'all' 
+                ? classesData 
+                : classesData.filter(cls => {
+                    if (filter === 'online') return cls.mode === 'online';
+                    if (filter === 'in-person') return cls.mode === 'in-person';
+                    return cls.teacherSlug === filter;
+                });
+                
+            if (filteredClasses.length === 0) {
+                container.innerHTML = `
+                    <div class="no-classes">
+                        <i class="fas fa-calendar-times"></i>
+                        No classes found matching your filter.
+                    </div>
+                `;
+                return;
+            }
+            
+            filteredClasses.forEach(cls => {
+                const date = new Date(cls.date);
+                const day = date.getDate();
+                const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                const month = monthNames[date.getMonth()];
+                
+                const classCard = document.createElement('div');
+                classCard.className = 'class-card';
+                
+                classCard.innerHTML = `
+                    <div class="class-tag ${cls.mode === 'online' ? 'tag-online' : 'tag-in-person'}">
+                        ${cls.mode === 'online' ? 'Online' : 'In-Person'}
+                    </div>
+                    <div class="class-header">
+                        <div class="class-date">
+                            <div class="date-number">${day}</div>
+                            <div class="date-details">
+                                <div class="date-month">${month}</div>
+                                <div class="date-day">${cls.day}</div>
+                            </div>
+                        </div>
+                        <h3 class="class-title">${cls.title}</h3>
+                        <div class="class-teacher">${cls.teacher}</div>
+                    </div>
+                    <div class="class-body">
+                        <div class="class-detail">
+                            <i class="fas fa-clock"></i>
+                            <div class="class-detail-content">
+                                <div class="class-detail-label">Time</div>
+                                <div class="class-detail-text">${cls.time}</div>
+                            </div>
+                        </div>
+                        <div class="class-detail">
+                            <i class="fas ${cls.mode === 'online' ? 'fa-video' : 'fa-map-marker-alt'}"></i>
+                            <div class="class-detail-content">
+                                <div class="class-detail-label">Location</div>
+                                <div class="class-detail-text">${cls.location}</div>
+                            </div>
+                        </div>
+                        <div class="class-description">
+                            ${cls.description}
+                        </div>
+                        <div class="class-actions">
+                            <a href="${cls.registerLink}" class="class-action-btn register-btn">
+                                <i class="fas ${cls.mode === 'online' ? 'fa-video' : 'fa-user-plus'}"></i>
+                                ${cls.mode === 'online' ? 'Join Online' : 'Register'}
+                            </a>
+                            <a href="#" class="class-action-btn calendar-btn">
+                                <i class="fas fa-calendar-plus"></i>
+                                Add to Calendar
+                            </a>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(classCard);
+            });
+        }
+        
+        // Setup filters
+        function setupFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Apply filter
+                    const filter = button.getAttribute('data-filter');
+                    displayClasses(filter);
+                });
+            });
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Display sample classes
+            displayClasses();
+            setupFilters();
+            
+            // Mobile menu handling
+            document.querySelector('.menu-button').addEventListener('click', function() {
+                this.classList.toggle('active');
+                document.querySelector('.nav-link-wrapper').classList.toggle('show');
+            });
+
+            // Close menu when clicking a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.querySelector('.menu-button').classList.remove('active');
+                    document.querySelector('.nav-link-wrapper').classList.remove('show');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
