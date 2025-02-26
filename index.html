@@ -3469,6 +3469,237 @@
             }
         }
     </style>
+    <!-- Add these new styles for the preview sections -->
+    <style>
+        /* Preview Sections Styling */
+        .preview-section {
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        .preview-section.alt-bg {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            color: var(--text);
+            margin-top: 1rem;
+        }
+        
+        .preview-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .preview-content.reverse {
+            flex-direction: row-reverse;
+        }
+        
+        .preview-text {
+            flex: 1;
+        }
+        
+        .preview-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            color: var(--light-text);
+        }
+        
+        .preview-image {
+            flex: 1;
+        }
+        
+        .rounded-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        
+        .link-to-more {
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .link-to-more:hover {
+            opacity: 0.8;
+        }
+        
+        .link-to-more .arrow-icon {
+            margin-left: 0.5rem;
+            font-style: normal;
+        }
+        
+        .link-to-more.centered {
+            display: block;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        /* Acharyas preview styles */
+        .acharyas-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .acharya-preview-card {
+            text-align: center;
+        }
+        
+        .acharya-preview-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .acharya-preview-card h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .acharya-preview-card p {
+            color: var(--light-text);
+        }
+        
+        /* Classes preview styles */
+        .classes-preview {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .class-preview-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .class-date {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary);
+            border-radius: 8px;
+            padding: 0.8rem;
+            min-width: 60px;
+        }
+        
+        .date-number {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        
+        .date-month {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+        
+        .class-info h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .class-teacher, .class-location {
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        /* Dual preview section */
+        .dual-preview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .half-preview .section-header {
+            text-align: left;
+        }
+        
+        .half-preview .section-title {
+            font-size: 2rem;
+        }
+        
+        /* Responsive styles */
+        @media screen and (max-width: 992px) {
+            .acharyas-preview, .classes-preview {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .dual-preview {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .preview-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .preview-content.reverse {
+                flex-direction: column;
+            }
+            
+            .acharyas-preview, .classes-preview {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <!-- Add this CSS fix to address the horizontal layout issue -->
+    <style>
+        /* Fix for horizontal layout issue */
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .site-wrapper {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Preview Sections Styling - with fixes */
+        .preview-section {
+            padding: 5rem 0;
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+        }
+        
+        /* Rest of your preview section styles */
+    </style>
   </head>
   <body class="body">
     <!-- Minimal Snowfall -->
@@ -3592,66 +3823,52 @@
               <div class="count">01</div>
               <div class="tagline">
                 <div class="tagline-line"></div>
-                <h5 class="heading-tagline">Ancient Wisdom</h5>
+                <h5 class="heading-tagline">Our Philosophy</h5>
               </div>
-              <h2 class="head">Understanding Vedantic Knowledge</h2>
+              <h2 class="head">Vedantic Wisdom</h2>
               <p>
-                Vedanta, the ancient wisdom of self-knowledge, provides a systematic approach to understanding our true nature. 
-                Through the study of sacred texts and guidance from realized masters, we explore the profound teachings that 
-                lead to spiritual awakening. Discover the timeless principles that have guided seekers for millennia.
+                Param Praman Darshan is dedicated to spreading the timeless wisdom of Vedanta. Our teachings are rooted in the ancient scriptures of India, particularly the Upanishads, Bhagavad Gita, and Brahma Sutras - collectively known as Prasthana Trayi.
               </p>
-              <a href="#" class="link-to hero more w-inline-block">
-                <div>read more</div>
+              <p>
+                We believe that self-knowledge is the key to lasting peace and fulfillment, and our mission is to make these profound teachings accessible to all sincere seekers.
+              </p>
+              <a href="about.html" class="link-to hero more w-inline-block">
+                <div>learn more</div>
                 <div class="icon-scroll more w-embed">
                   <svg width="16" height="24" viewbox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M16 16L14.59 14.59L9 20.17V0H7V20.17L1.42 14.58L0 16L8 24L16 16Z"
-                      fill="currentColor"
-                    ></path>
+                    <path d="M16 16L14.59 14.59L9 20.17V0H7V20.17L1.42 14.58L0 16L8 24L16 16Z" fill="currentColor"></path>
                   </svg>
                 </div>
               </a>
             </div>
-            <img
-              src="media/mataji.jpg"
-              id="w-node-39e02eb8b346-0b7ceb38"
-              alt="Mataji"
-              class="image _01"
-            />
+            <img src="media/about.jpg" id="w-node-_4df472fa-5edb-56f8-c52e-3c3d0a4e5e44-0b7ceb38" alt="Spiritual gathering" class="image" />
           </div>
         </div>
-        <div class="content-wrapper content">
-          <div class="grid">
-            <div id="w-node-12f012158455-0b7ceb38" class="content-text">
+        <div class="content-wrapper content alt">
+          <div class="grid alt">
+            <img src="media/swamiji-main.jpg" id="w-node-_12f01215-8461-5c01-f8c5-12f012158462-0b7ceb38" alt="Acharyas teaching" class="image" />
+            <div id="w-node-_12f01215-8463-5c01-f8c5-12f012158463-0b7ceb38" class="content-text">
               <div class="count">02</div>
               <div class="tagline">
                 <div class="tagline-line"></div>
-                <h5 class="heading-tagline">Spiritual Practice</h5>
+                <h5 class="heading-tagline">Our Guides</h5>
               </div>
-              <h2 class="head">Daily Sadhana & Meditation</h2>
+              <h2 class="head">Revered Acharyas</h2>
               <p>
-                Regular spiritual practice (sadhana) is essential for inner transformation. Through daily meditation, 
-                contemplation, and devotional practices, we cultivate awareness and deepen our connection with the divine. 
-                Learn time-tested techniques for stilling the mind and awakening consciousness.
+                Our esteemed Acharyas are the pillars of Param Praman Darshan, embodying the ancient wisdom of Vedanta and guiding seekers on their spiritual journey. With their profound knowledge, compassionate guidance, and unwavering dedication, they illuminate the path to self-realization.
               </p>
-              <a href="#" class="link-to hero more w-inline-block">
-                <div>read more</div>
+              <p>
+                Through regular discourses, meditation sessions, and personal guidance, our Acharyas make the profound teachings of Vedanta accessible to all.
+              </p>
+              <a href="acharyas.html" class="link-to hero more w-inline-block">
+                <div>meet our acharyas</div>
                 <div class="icon-scroll more w-embed">
                   <svg width="16" height="24" viewbox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M16 16L14.59 14.59L9 20.17V0H7V20.17L1.42 14.58L0 16L8 24L16 16Z"
-                      fill="currentColor"
-                    ></path>
+                    <path d="M16 16L14.59 14.59L9 20.17V0H7V20.17L1.42 14.58L0 16L8 24L16 16Z" fill="currentColor"></path>
                   </svg>
                 </div>
               </a>
             </div>
-            <img
-              src="images/02.png"
-              id="w-node-12f012158464-0b7ceb38"
-              alt=""
-              class="image"
-            />
           </div>
         </div>
         <div class="content-wrapper content">
@@ -3660,36 +3877,87 @@
               <div class="count">03</div>
               <div class="tagline">
                 <div class="tagline-line"></div>
-                <h5 class="heading-tagline">The Spiritual Path</h5>
+                <h5 class="heading-tagline">Sacred Space</h5>
               </div>
-              <h2 class="head">Journey to Self-Realization</h2>
+              <h2 class="head">Spiritual Facilities</h2>
               <p>
-                The path to self-realization is a transformative journey that unfolds uniquely for each seeker. 
-                Through the guidance of realized masters and the support of spiritual community, we navigate the 
-                inner landscape toward ultimate truth. Experience the profound peace and joy that comes from 
-                discovering your true nature.
+                Our ashram provides a serene environment conducive to spiritual practice and self-discovery. The centerpiece of our campus is the Shri Jagaddhiteshwar Mahadev temple, where God is invoked and worshipped daily in the form of shiv-linga representing our presiding deity.
               </p>
-              <a href="#" class="link-to hero more w-inline-block">
-                <div>read more</div>
+              <p>
+                The temple is a symbolic representation of the sadhak's path to spiritual awakening and enlightenment, offering a sacred space for meditation and contemplation.
+              </p>
+              <a href="facilities.html" class="link-to hero more w-inline-block">
+                <div>explore our facilities</div>
                 <div class="icon-scroll more w-embed">
                   <svg width="16" height="24" viewbox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M16 16L14.59 14.59L9 20.17V0H7V20.17L1.42 14.58L0 16L8 24L16 16Z"
-                      fill="currentColor"
-                    ></path>
+                    <path d="M16 16L14.59 14.59L9 20.17V0H7V20.17L1.42 14.58L0 16L8 24L16 16Z" fill="currentColor"></path>
                   </svg>
                 </div>
               </a>
             </div>
-            <img
-              src="images/03.png"
-              id="w-node-af252b1c3822-0b7ceb38"
-              alt=""
-              class="image"
-            />
+            <img src="media/mandir.jpg" id="w-node-af252b1c3822-0b7ceb38" alt="Jagaddhiteshwar Mahadev Temple" class="image" />
           </div>
         </div>
       </div>
+      <!-- Add this fourth content section before the footer -->
+      <div class="content-wrapper content alt">
+        <div class="grid alt">
+          <img src="media/events.png" id="w-node-events-section-image" alt="Spiritual Events" class="image" />
+          <div id="w-node-events-section-text" class="content-text">
+            <div class="count">04</div>
+            <div class="tagline">
+              <div class="tagline-line"></div>
+              <h5 class="heading-tagline">Sacred Celebrations</h5>
+            </div>
+            <h2 class="head">Events & Gallery</h2>
+            <p>
+              Join us for traditional festivals, spiritual retreats, and community gatherings that celebrate our rich cultural heritage and deepen our spiritual connection. Our events calendar includes regular satsangs, special ceremonies, and seasonal celebrations.
+            </p>
+            <p>
+              Explore our photo gallery to witness moments of divine grace captured during our spiritual gatherings, ceremonies, and daily life at the ashram.
+            </p>
+            <div class="dual-links">
+              <a href="events.html" class="link-to hero more w-inline-block">
+                <div>view events</div>
+                <div class="icon-scroll more w-embed">
+                  <svg width="16" height="24" viewbox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 16L14.59 14.59L9 20.17V0H7V20.17L1.42 14.58L0 16L8 24L16 16Z" fill="currentColor"></path>
+                  </svg>
+                </div>
+              </a>
+              <a href="photos.html" class="link-to hero more w-inline-block" style="margin-left: 2rem;">
+                <div>browse gallery</div>
+                <div class="icon-scroll more w-embed">
+                  <svg width="16" height="24" viewbox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 16L14.59 14.59L9 20.17V0H7V20.17L1.42 14.58L0 16L8 24L16 16Z" fill="currentColor"></path>
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Add this CSS for the dual links -->
+      <style>
+        .dual-links {
+          display: flex;
+          margin-top: 1.5rem;
+        }
+        
+        @media screen and (max-width: 768px) {
+          .dual-links {
+            flex-direction: column;
+            gap: 1rem;
+          }
+          
+          .dual-links .link-to.hero.more {
+            margin-left: 0 !important;
+          }
+        }
+      </style>
+      
+      <!-- Footer remains unchanged -->
       <div class="footer">
         <div class="content-wrapper content footer">
           <div class="grid footer">
